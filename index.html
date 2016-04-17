@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/angular-chart.js/dist/angular-chart.css">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="lib/Chart.js/Chart.js"></script>
+    <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="js/app.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-positive ">
+        <h1 class="title">E P R E S S I O N</h1>
+      </ion-header-bar>
+      <script></script>
+      <ion-content >
+
+        <div class="card">
+          <div class="item item-text-wrap">
+            Worried about a specific significant indivual in your life? Enter thier Twitter username below.
+          </div>
+        </div>
+
+
+            <div class="list list-inset" ng-controller ="InputController">
+                <label class="item item-input" >
+                  <i class="icon ion-chevron-right placeholder-icon"></i>
+                  <input type="text" ng-model="userData.input" placeholder="Username">
+                </label>
+            </div>
+
+            <button class="button button-block button-positive button-outline" ng-controller="InputController" ng-controller="ReloadController" ng-click="findUser()" ng-click = "reloader()" >
+              Analyze
+            </button>
+
+        <div class="card" ng-controller="EmotionController">
+          <div class="item item-divider">
+            Emotional Analysis
+          </div>
+          <div class="item item-text-wrap">
+            <canvas id="line" class="chart chart-line" data="data" labels="labels" legend="false" series="series" options="{showTooltips: false}"></canvas>
+          </div>
+
+          <div class="card">
+            <div class="item item-text-wrap">
+              A sentiment analysis of the tweets posted on the twitter page supports the statement that there is a low to medium chance that the account holder of the twitter page may have depression and this could be looked into further by an authorized physician
+            </div>
+          </div>
+        </ion-content>
+      </ion-pane>
+    </body>
+  </html>
